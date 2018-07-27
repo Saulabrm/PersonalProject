@@ -1,4 +1,4 @@
-## ---- Target Variable
+# Target Variable --------
 
 # Idea is to enter the data, the variable to become a target and it outputs a target variable
 
@@ -11,13 +11,13 @@ target_increment_x_percent_in_n_periods <- function(target_variable_vector , x =
   
   x_percentage <- x / 100
   
-  lagged_target <- dplyr::lag(target_variable_vector, n = n)
+  lagged_target <- dplyr::lead(target_variable_vector, n = n)
   
   percentage_change <- ((lagged_target - target_variable_vector) / target_variable_vector) * 100
   
   target = percentage_change >= x
   
-  target
+  as.factor(target)
   
 }
 
